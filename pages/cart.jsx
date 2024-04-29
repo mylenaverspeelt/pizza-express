@@ -7,11 +7,11 @@ const Cart = () => {
       <div className={styles.left}>
         <table className={styles.table}>
           <tr className={styles.trTitle}>
-            <th>Product</th>
-            <th>Name</th>
+            <th>Produto</th>
+            <th>Nome</th>
             <th>Extras</th>
-            <th>Price</th>
-            <th>Quantity</th>
+            <th>Preço</th>
+            <th>Quantidade</th>
             <th>Total</th>
           </tr>
           <tr className={styles.tr}>
@@ -76,17 +76,17 @@ const Cart = () => {
       </div>
       <div className={styles.right}>
         <div className={styles.wrapper}>
-          <h2 className={styles.title}>CART TOTAL</h2>
+          <h2 className={styles.title}>TOTAL</h2>
           <div className={styles.totalText}>
             <b className={styles.totalTextTitle}>Subtotal:</b>$79.60
           </div>
           <div className={styles.totalText}>
-            <b className={styles.totalTextTitle}>Discount:</b>$0.00
+            <b className={styles.totalTextTitle}>Desconto:</b>$0.00
           </div>
           <div className={styles.totalText}>
             <b className={styles.totalTextTitle}>Total:</b>$79.60
           </div>
-          <button className={styles.button}>CHECKOUT NOW!</button>
+          <button className={styles.button}>REALIZAR PAGAMENTO</button>
         </div>
       </div>
     </div>
