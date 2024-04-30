@@ -4,20 +4,23 @@ import Pizza from "../../../models/Pizza.js"
 export default async function handler(req, res) {
     const { method } = req
 
-    try {
-        await dbConnect()
+    await dbConnect()
 
-        if (method === "GET") {
+    if (method === "GET") {
+        try {
             const pizzas = await Pizza.find()
             res.status(200).json(pizzas)
+        } catch (error) {
+            res.status(500).json(error)
         }
+    }
     
-        if (method === "POST") {
+    if (method === "POST") {
+        try {
             const pizza = await Pizza.create(req.body)
             res.status(201).json(pizza)
+        } catch (error) {
+            res.status(500).json(error)
         }
-    } catch (error) {
-        console.error(error)
-        res.status(500).json({ error: "Internal Server Error" })
     }
 }
