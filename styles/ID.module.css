@@ -1,0 +1,33 @@
+.quantity {
+    width: 50px;
+    text-align: center;
+    -moz-appearance: textfield;
+}
+
+.quantity::-webkit-inner-spin-button,
+.quantity::-webkit-outer-spin-button {
+    appearance: none;
+    margin: 0;
+}
+
+.decrementButton,
+.incrementButton {
+    width: 30px;
+    height: 30px;
+    font-size: 18px;
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+}
+
+.decrementButton:hover,
+.incrementButton:hover {
+
+    color: #d1411e
+}
+
+
+.buttonContainer {
+    display: flex;
+    align-items: center;
+}

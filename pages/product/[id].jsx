@@ -2,6 +2,7 @@ import styles from "../../styles/Product.module.css";
 import Image from "next/image";
 import { useState } from "react";
 import axios from "axios";
+import style from "../../styles/ID.module.css"
 
 export const getServerSideProps = async ({ params }) => {
   const res = await axios.get(`http://localhost:3000/api/products/${params.id}`)
@@ -15,6 +16,8 @@ export const getServerSideProps = async ({ params }) => {
 const Product = ({ pizza }) => {
   const [size, setSize] = useState(0);
   const [price, setPrice] = useState(pizza.prices[0]);
+  const [extras, setExtras] = useState([]);
+  const [quantity, setQuantity] = useState(1);
 
   const changePrice = (number) => {
     setPrice(price + number)
@@ -30,8 +33,10 @@ const Product = ({ pizza }) => {
     const checked = e.target.checked
     if (checked) {
       changePrice(option.price)
+      setExtras(prev => [...prev, option])
     } else {
       changePrice(-option.price)
+      setExtras(extras.filter(extra => extra._id !== option._id))
     }
   }
 
@@ -77,8 +82,12 @@ const Product = ({ pizza }) => {
           ))}
         </div>
         <div className={styles.add}>
-          <input type="number" defaultValue={1} className={styles.quantity} />
-          <button className={styles.button}>Adicionar ao Carrinho</button>
+          <div className={style.buttonContainer}>
+            <button className={style.decrementButton} onClick={() => setQuantity(Math.max(1, quantity - 1))}> {'<'} </button>
+            <input onChange={(e) => setQuantity(e.target.value)} type="number" defaultValue={1} className={style.quantity} value={quantity} />
+            <button className={style.incrementButton} onClick={() => setQuantity(quantity + 1)}> {'>'} </button>
+            <button className={styles.button}>Adicionar ao Carrinho</button>
+          </div>
         </div>
       </div>
     </div>
